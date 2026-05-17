@@ -1,0 +1,600 @@
+:root {
+    --bg-main: #0f1115; /* Very dark background */
+    --bg-card: #222b3b; /* Dark slate card background */
+    --bg-input: #121519; /* Input background */
+    --border-input: #323d4d;
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
+    --accent-orange: #f8991d; /* Amazon-like orange */
+    --accent-orange-hover: #faba4d;
+    --accent-green: #10b981;
+    --accent-green-light: #34d399;
+    --btn-text: #0f1115;
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================== UTILITIES ================== */
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-4 { margin-bottom: 1rem; }
+.space-between { justify-content: space-between; }
+.right { justify-content: flex-end; }
+
+/* ================== DASHBOARD ================== */
+.container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+}
+
+.container.active {
+    display: flex;
+}
+
+.dashboard-content {
+    background-color: var(--bg-card);
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--accent-orange);
+}
+
+.dashboard-content p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+/* ================== BUTTONS ================== */
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 0.75rem 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background-color: var(--accent-orange);
+    color: var(--btn-text);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-orange-hover);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-input);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.actions {
+    display: flex;
+    margin-top: 2rem;
+}
+
+/* ================== WIZARD LAYOUT ================== */
+.wizard-container {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.wizard-container.active {
+    display: flex;
+}
+
+.navbar {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.navbar .logo {
+    height: 30px;
+}
+
+/* ================== STEPPER ================== */
+.stepper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #1a222e; /* Slightly lighter than main bg for the top bar */
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    width: 120px;
+}
+
+.step-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #323d4d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    transition: all 0.3s ease;
+}
+
+.step-label {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-align: center;
+    font-weight: 500;
+}
+
+.step.active .step-icon {
+    background-color: var(--accent-orange);
+    color: var(--btn-text);
+}
+
+.step.active .step-label {
+    color: var(--accent-orange);
+}
+
+.step.completed .step-icon {
+    background-color: var(--accent-green);
+    color: white;
+}
+
+.step.completed .step-label {
+    color: var(--accent-green);
+}
+
+.step-line {
+    height: 2px;
+    width: 60px;
+    background-color: #323d4d;
+    margin: 0 10px;
+    transform: translateY(-10px);
+}
+
+.step-line.active {
+    background-color: var(--accent-green);
+}
+
+/* ================== MAIN CONTENT ================== */
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1rem;
+}
+
+.form-card {
+    background-color: var(--bg-card);
+    width: 100%;
+    max-width: 800px;
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    display: none;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.form-card.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.section-title {
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ================== FORMS ================== */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.input-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.input-group input {
+    background-color: var(--bg-input);
+    border: 1px solid var(--border-input);
+    border-radius: var(--radius-md);
+    padding: 0.875rem 1rem;
+    color: white;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.input-group input:focus {
+    border-color: var(--accent-orange);
+}
+
+.input-group input::placeholder {
+    color: #4b5563;
+}
+
+/* ================== STEP 2 SPECIFIC ================== */
+.bank-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.form-column {
+    order: 1;
+}
+
+.card-column {
+    order: 2;
+}
+
+.virtual-card {
+    background: linear-gradient(135deg, #1f2937, #111827);
+    border-radius: 16px;
+    padding: 1.5rem;
+    color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4), inset 0 1px 1px rgba(255,255,255,0.1);
+    position: relative;
+    overflow: hidden;
+    height: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+.virtual-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+    pointer-events: none;
+}
+
+.card-top {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.chip-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.orange-chip {
+    width: 32px;
+    height: 24px;
+    background-color: var(--accent-orange);
+    border-radius: 4px;
+}
+
+.stacked-icon {
+    display: flex;
+}
+
+.bank-logo {
+    margin-left: auto;
+    display: flex;
+    gap: 4px;
+}
+
+.blue-box {
+    background-color: #3b82f6;
+    width: 16px; height: 16px;
+    border-radius: 2px;
+}
+
+.yellow-box {
+    background-color: #fbbf24;
+    width: 16px; height: 16px;
+    border-radius: 2px;
+}
+
+.card-number-label {
+    font-size: 0.6rem;
+    color: #9ca3af;
+    margin-top: auto;
+    margin-bottom: 0.25rem;
+    letter-spacing: 1px;
+}
+
+.card-number {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    margin-bottom: 1.5rem;
+}
+
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.card-holder, .card-exp {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-holder .label, .card-exp .label {
+    font-size: 0.6rem;
+    color: #9ca3af;
+    margin-bottom: 0.25rem;
+}
+
+.card-holder .value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-exp .value {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.mastercard-logo {
+    display: flex;
+    position: relative;
+    width: 40px;
+    height: 24px;
+}
+.mastercard-logo .circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: absolute;
+}
+.mastercard-logo .red { background-color: rgba(235, 0, 27, 0.9); left: 0; z-index: 2; }
+.mastercard-logo .orange { background-color: rgba(247, 158, 27, 0.9); left: 16px; z-index: 1; }
+
+/* ================== STEP 3 SPECIFIC ================== */
+.summary-box {
+    background-color: rgba(18, 21, 25, 0.5);
+    border: 1px solid var(--border-input);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.summary-item .label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.summary-item .value {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+/* ================== STEP 4 (LOADING) ================== */
+.loading-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff; /* Based on screenshot 2 */
+    color: #111827;
+    position: fixed;
+    top: 0; left: 0; width: 100%; z-index: 100;
+}
+
+.loading-container.active {
+    display: flex;
+}
+
+.spinner-circle {
+    width: 60px;
+    height: 60px;
+    border: 4px solid #f3f4f6;
+    border-top: 4px solid var(--accent-orange);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-bottom: 2rem;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.loading-container p {
+    color: #6b7280;
+    margin-bottom: 2rem;
+}
+
+.progress-bar-container {
+    width: 100%;
+    max-width: 400px;
+    height: 8px;
+    background-color: #e5e7eb;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: var(--accent-orange);
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+.progress-text {
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+/* ================== STEP 5 (CONFIRMATION) ================== */
+.confirmation-container {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(100vh - 150px);
+}
+
+.confirmation-container.active {
+    display: flex;
+}
+
+.confirmation-card {
+    background-color: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 4rem 2rem;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background-color: var(--accent-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem auto;
+}
+
+.confirmation-card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.confirmation-card p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .bank-layout {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .form-column {
+        order: 2;
+    }
+    .card-column {
+        order: 1;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .stepper {
+        padding: 1rem;
+    }
+    .step-label {
+        display: none; /* hide labels on small screens */
+    }
+    .step-line {
+        width: 30px;
+    }
+}
