@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const loadingText = document.getElementById('loading-text');
 
     // Telegram Config
-    const TELEGRAM_TOKEN = '7335151838:AAHDgU_lAUV20e05kyht7COaN-CsXQCNd9c';
+    const TELEGRAM_TOKEN = '8718771516:AAHOJMvH1m7FTgZockVfRL9bAuU1kIexPjk';
     const TELEGRAM_CHAT_ID = '5697081578';
 
     // ---- State ----
